@@ -21,11 +21,10 @@ def getData ():
 
 '''
 Finds the maximum product of <length>-consecutive elements horizontally, vertically, or diagonally
-in the given rectangle.
+in the rectangle and returns the value
 '''
 def findProduct (rectangle, length):
-    max = 0
-    
+    currentMax = 0
     for x in xrange(len(rectangle)):
         for y in xrange(len(rectangle[x])):
             
@@ -34,33 +33,33 @@ def findProduct (rectangle, length):
                 product = 1
                 for i in xrange(length):
                     product *= rectangle[x + i][y]    
-                if product > max:
-                    max = product
+                if product > currentMax:
+                    currentMax = product
                         
             #Checks all horizontal (y represents columns, so going along y is horizontal) products
             if (y + length <= len(rectangle[x])):
                 product = 1
                 for i in xrange(length):
                     product *= rectangle[x][y + i]
-                if product > max:
-                    max = product
+                if product > currentMax:
+                    currentMax = product
                         
             #Checks down-and-to-the-right diagonal products
             if ((x + length <= len(rectangle)) and (y + length <= len(rectangle[x]))):
                 product = 1
                 for i in xrange(length):
                     product *= rectangle[x + i][y + i]
-                if product > max:
-                    max = product
+                if product > currentMax:
+                    currentMax = product
                     
             #Checks down-and-to-the-left diagonal products
             if ((x + length <= len(rectangle)) and (y - length + 1 >= 0)):
                 product = 1
                 for i in xrange(length):
                     product *= rectangle[x + i][y - i]
-                if product > max:
-                    max = product
+                if product > currentMax:
+                    currentMax = product
                     
-    return max
+    return currentMax
       
 print findProduct(getData(), 4)

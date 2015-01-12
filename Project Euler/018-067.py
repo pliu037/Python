@@ -25,14 +25,14 @@ def getData ():
 '''
 Finds the maximum sum of a path through the triangle and returns the value
 Method:
-For each row of the triangle, starting at the base, the algorithm calculates the maximum sum of a path
-to each element of that row from the base.
+For each row of the triangle, starting at the base, calculate the maximum sum of a path, from the
+base, to each element of that row.
   a
 b   c
 Given an element a in a particular row, it can reached from the base either through b or c, where b
 and c themselves represent the maximum sum of a path through the subtrees up to elements b and c,
-respectively. Thus, after iterating up through the triangle, the value obtained at the peak position
-is the maximum sum of a path through the entire triangle.
+respectively. After iterating up through the triangle, the value obtained at the peak position is the
+maximum sum of a path through the entire triangle.
 '''
 def findPath (triangle):
     lowerRow = triangle[len(triangle) - 1]
