@@ -1,7 +1,7 @@
 #https://projecteuler.net/problem=11
 
 '''
-Gets the triangle data from the file data.txt located on the desktop
+Gets the rectangle data from the file data.txt located on the desktop
 Parses each line, splitting it and returning an array of integers
 Appends the array associated with each line to a growing 2D array, representing the layout of the data
 file (x representing rows, y representing columns)
