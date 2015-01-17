@@ -22,6 +22,5 @@ def sumDigits(num):
         currentSum += int(i)
     return currentSum
 
-print sumDigits(power(2, 1000))    
+print sumDigits(power(2, 1000))
 print sumDigits(factorial(100))
-    
