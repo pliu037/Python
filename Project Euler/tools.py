@@ -1,5 +1,7 @@
 #Tools used frequently by Project Euler solutions
 
+import re
+
 '''
 Gets integer grid data from the file data.txt located on the desktop
 Parses each line, splitting it and returning an array of integers
@@ -7,7 +9,7 @@ Appends the array associated with each line to a growing 2D array, representing 
 file (x representing rows, y representing columns)
 Returns the 2D array
 '''
-def getData():
+def get2DData():
     f = open('C:/Users/Peng/Desktop/data.txt', 'r')
     data = []
     line = f.readline()
@@ -18,6 +20,29 @@ def getData():
         line = f.readline()
     f.close()
     return data
+
+'''
+Gets the name data from the file data.txt located on the desktop
+Removes all "s from the list then splits the list into an array of names
+Returns the array
+'''
+def getWordData():
+    f = open('C:/Users/Peng/Desktop/data.txt', 'r')
+    data = []
+    line = f.readline()
+    while line != '':
+        line = re.sub('["]', '', line)
+        data = line.split(',')
+        line = f.readline()
+    f.close()
+    return data
+
+#Finds the sum of the value of the letters of a name, with A = 1 through Z = 26, and returns the value
+def getWordValue(name):
+    currentSum = 0
+    for i in name:
+        currentSum += ord(i) - ord('A') + 1
+    return currentSum
 
 '''
 Return an array of all primes, in ascending order, up to n, exclusive

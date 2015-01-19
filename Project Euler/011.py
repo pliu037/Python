@@ -1,6 +1,6 @@
 #https://projecteuler.net/problem=11
 
-from tools import getData
+from tools import get2DData
 
 '''
 Finds the maximum product of <length>-consecutive elements horizontally, vertically, or diagonally
@@ -45,4 +45,4 @@ def findProduct(rectangle, length):
                     
     return currentMax
       
-print findProduct(getData(), 4)
+print findProduct(get2DData(), 4)

@@ -3,7 +3,7 @@ https://projecteuler.net/problem=18
 https://projecteuler.net/problem=67
 '''
 
-from tools import getData
+from tools import get2DData
 
 '''
 Finds the maximum sum of a path through the triangle and returns the value
@@ -27,4 +27,4 @@ def findPath(triangle):
         lowerRow = answerLine
     return lowerRow[0]
     
-print findPath(getData())
+print findPath(get2DData())
