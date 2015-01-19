@@ -14,7 +14,7 @@ Observation:
 In the other direction, two integers could lead to the same point (3 is odd: 3*3 + 1 = 10; 20 is even:
 20/2 = 10). As a result, working backward appears to be more difficult than going forward.
 '''
-def collatzRule (numLine, start):
+def collatzRule(numLine, start):
     
     #Start has landed within numLine
     if start < len(numLine):
@@ -45,11 +45,11 @@ Finds the integer under the ceiling that generates the longest Collatz sequence 
 integer
 Method:
 Generate an array of 0s of length <ceiling> with indices representing starting integers and values
-representing the length of the Collatz sequence starting from that integer. Pre-populate the array by
+indicating the length of the Collatz sequence starting from that integer. Pre-populate the array by
 setting the values at indices 2**i to i + 1 (the number of elements in the Collatz sequence starting
 at 2**i). Determine the length of the Collatz sequence starting at x = 3 for 3 <= x < ceiling.
 '''
-def collatz (ceiling):
+def collatz(ceiling):
     numLine = [0 for _i in xrange(ceiling)]
     i = 0
     while 2**i < ceiling:

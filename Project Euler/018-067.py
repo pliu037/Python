@@ -3,24 +3,7 @@ https://projecteuler.net/problem=18
 https://projecteuler.net/problem=67
 '''
 
-'''
-Gets the triangle data from the file data.txt located on the desktop
-Parses each line, splitting it and returning an array of integers
-Appends the array associated with each line to a growing 2D array, representing the layout of the data
-file (x representing rows, y representing columns)
-Returns the 2D array
-'''
-def getData ():
-    f = open('C:/Users/Peng/Desktop/data.txt', 'r')
-    data = []
-    line = f.readline()
-    while line != '':
-        lineParsed = line.split()
-        lineParsed = map(int, lineParsed)
-        data.append(lineParsed)
-        line = f.readline()
-    f.close()
-    return data
+from tools import getData
 
 '''
 Finds the maximum sum of a path through the triangle and returns the value
@@ -34,7 +17,7 @@ and c themselves represent the maximum sum of a path through the subtrees up to 
 respectively. After iterating up through the triangle, the value obtained at the peak position is the
 maximum sum of a path through the entire triangle.
 '''
-def findPath (triangle):
+def findPath(triangle):
     lowerRow = triangle[len(triangle) - 1]
     for x in xrange (len(triangle) - 1):
         upperRow = triangle[len(triangle) - 2 - x]

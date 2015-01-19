@@ -1,8 +1,8 @@
 #https://projecteuler.net/problem=19
 
 '''
-Finds and returns the number of days a Sunday falls on the first of a month between Jan 1 of year x
-and Dec 31 of year y given that Jan 1, 1900 is a Monday
+Finds and returns the number of Sundays that fall on the first of a month between Jan 1 of year x and
+Dec 31 of year y given that Jan 1, 1900 is a Monday
 Method:
 Starting with day = 0 (Monday) on Jan 1, 1900, loop through each month, adding the number of days in
 that month, adjusted for leap years. An invariant is that day always represents the first day of a
@@ -46,7 +46,6 @@ def countSundays(x, y):
             day = day % DAYSINWEEK
             
         year += 1
-    
     return sundays
     
 print countSundays (1901, 2000)

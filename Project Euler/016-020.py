@@ -7,7 +7,7 @@ from gmpy2 import mpz
 from gmpy2 import fac
 
 #Finds the power, a**b, and returns it as a mpz
-def power (a, b):
+def power(a, b):
     return mpz(a**b)
 
 #Finds n! and returns it as a mpz

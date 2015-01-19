@@ -1,29 +1,12 @@
 #https://projecteuler.net/problem=11
 
-'''
-Gets the rectangle data from the file data.txt located on the desktop
-Parses each line, splitting it and returning an array of integers
-Appends the array associated with each line to a growing 2D array, representing the layout of the data
-file (x representing rows, y representing columns)
-Returns the 2D array
-'''
-def getData ():
-    f = open('C:/Users/Peng/Desktop/data.txt', 'r')
-    data = []
-    line = f.readline()
-    while line != '':
-        lineParsed = line.split()
-        lineParsed = map(int, lineParsed)
-        data.append(lineParsed)
-        line = f.readline()
-    f.close()
-    return data
+from tools import getData
 
 '''
 Finds the maximum product of <length>-consecutive elements horizontally, vertically, or diagonally
 in the rectangle and returns the value
 '''
-def findProduct (rectangle, length):
+def findProduct(rectangle, length):
     currentMax = 0
     for x in xrange(len(rectangle)):
         for y in xrange(len(rectangle[x])):
