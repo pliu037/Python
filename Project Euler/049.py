@@ -2,8 +2,11 @@
 
 from tools import findPrimes
 
-def findSequence():
-    primes = findPrimes(100)
+'''
+
+'''
+def findPrimeSequence():
+    primes = findPrimes(10000)
     print primes
 
-findSequence()
+findPrimeSequence()
