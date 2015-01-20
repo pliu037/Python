@@ -65,57 +65,58 @@ for i in range (len(msgs)-1):
     print strxor (key, msgs[i].decode("hex"))
 
 ######################### Problem 2 #########################
+'''
+numbers = [210205973,
+           22795300,
+           58776750,
+           121262470,
+           264731963,
+           140842553,
+           242590528,
+           195244728,
+           86752752]
+           
+P = 295075153L           
 
-#numbers = [210205973,
-#           22795300,
-#           58776750,
-#           121262470,
-#           264731963,
-#           140842553,
-#           242590528,
-#           195244728,
-#           86752752]
-#           
-#P = 295075153L           
+def next (i,j):
+    i = (2*i + 5)%P
+    j = (3*j + 7)%P
+    return i, j, i^j
+
+def check (i):
+    j = numbers[0]^i
+    for k in range (len (numbers)-1):
+        i, j, ixorj = next(i,j)
+        if ixorj != numbers[k+1]:
+            return False
+    return True
+
+#threads = 3
 #
-#def next (i,j):
-#    i = (2*i + 5)%P
-#    j = (3*j + 7)%P
-#    return i, j, i^j
+#def loop (i):
+#    while i < P:
+#        if check(i):
+#            temp = i
+#            j = numbers[0]^temp
+#            for k in range (len (numbers)):
+#                temp, j, xor = next(temp,j)
+#            print xor
+#        i += threads
 #
-#def check (i):
-#    j = numbers[0]^i
-#    for k in range (len (numbers)-1):
-#        i, j, ixorj = next(i,j)
-#        if ixorj != numbers[k+1]:
-#            return False
-#    return True
-#
-##threads = 3
-##
-##def loop (i):
-##    while i < P:
-##        if check(i):
-##            temp = i
-##            j = numbers[0]^temp
-##            for k in range (len (numbers)):
-##                temp, j, xor = next(temp,j)
-##            print xor
-##        i += threads
-##
-##if __name__ == '__main__':
-##    p = []
-##    for i in range (threads):
-##        p.append(Process(target=loop, args=(i,)))
-##    for i in range (threads):
-##        p[i].start()
-#
-#i = 0
-#while i < P:
-#    if check(i):
-#        j = numbers[0]^i
-#        for k in range (len (numbers)):
-#            i, j, ixorj = next(i,j)
-#        print ixorj
-#        break
-#    i += 1
+#if __name__ == '__main__':
+#    p = []
+#    for i in range (threads):
+#        p.append(Process(target=loop, args=(i,)))
+#    for i in range (threads):
+#        p[i].start()
+
+i = 0
+while i < P:
+    if check(i):
+        j = numbers[0]^i
+        for k in range (len (numbers)):
+            i, j, ixorj = next(i,j)
+        print ixorj
+        break
+    i += 1
+'''

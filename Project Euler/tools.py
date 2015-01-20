@@ -44,6 +44,12 @@ def getWordValue(name):
         currentSum += ord(i) - ord('A') + 1
     return currentSum
 
+#Checks whether x is a permutation of y and returns True if it is
+def isPermutation(x, y):
+    bag1 = sorted(str(x))
+    bag2 = sorted(str(y))
+    return bag1 == bag2
+
 '''
 Return an array of all primes, in ascending order, up to n, exclusive
 Method:

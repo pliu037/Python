@@ -1,12 +1,7 @@
 #https://projecteuler.net/problem=49
 
 from tools import findPrimes
-
-#Checks whether x is a permutation of y and returns True if it is
-def isPermutation(x, y):
-    bag1 = sorted(str(x))
-    bag2 = sorted(str(y))
-    return bag1 == bag2
+from tools import isPermutation
 
 '''
 Finds all triplets, (x, y, z), such that (10**(n - 1) <= x, y, z < 10**n), (x, y, and z are prime),

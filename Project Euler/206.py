@@ -4,20 +4,23 @@ from gmpy2 import isqrt
 from gmpy2 import mpz
 
 '''
-Assuming n has the same number of digits as the template (findSqForTemplate enforces this condition),
-returns True if n matches the template
+Assuming the third last digit of n is 9 and the last digit of n is 0 (findSqForTemplate enforces this
+condition), returns True if n matches the template (1_2_3_4_5_6_7_8_9_0)
 '''
 def fitsTemplate(n):
-    strng = n.digits()
-    template =['1','','2','','3','','4','','5','','6','','7','','8','','9','','0']
-    for i in xrange(len(template)):
-        if template[i] != '':
-            if strng[i] != template[i]:
-                return False
+    if (n / 10**18 != 1) or \
+       ((n / 10**16) % 10 != 2) or \
+       ((n / 10**14) % 10 != 3) or \
+       ((n / 10**12) % 10 != 4) or \
+       ((n / 10**10) % 10 != 5) or \
+       ((n / 10**8) % 10 != 6) or \
+       ((n / 10**6) % 10 != 7) or \
+       ((n / 10**4) % 10 != 8):
+        return False
     return True
 
 '''
-Finds the integer whose square matches the template 1_2_3_4_5_6_7_8_9_0, where each _ is a digit, and
+Finds the integer whose square matches the template, 1_2_3_4_5_6_7_8_9_0 where each _ is a digit, and
 returns its value
 Method:
 Since the template, 1_2_3_4_5_6_7_8_9_0, ends with 0, it's isqrt must end with 0. As such, the second

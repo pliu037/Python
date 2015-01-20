@@ -9,7 +9,7 @@ numbers (to reduce memory usage)
 Observation:
 Since the Fibonacci sequence can also be defined by a closed form (f(i) = (phi**i - psi**i)/sqrt(5)
 where phi = (1 + sqrt(5))/2 and psi (1 - sqrt(5))/2), the answer can also be obtained by solving for i
-such that F(i) > 10**999.
+such that F(i) > 10**(n - 1).
 '''
 def fibMinDigits(n):
     cache = [mpz(1), mpz(1)]
