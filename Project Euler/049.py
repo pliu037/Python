@@ -42,7 +42,7 @@ def findPrimeSequence(n):
         while j < numPrimes:
             
             '''
-            Optimization: Since subsequent primes are larger, if (2*current prime - base) > 10**n,
+            Optimization: Since subsequent primes are larger, if (2*current prime - base) >= 10**n,
             then no series whose second term is larger than the current prime can have a third term
             less than 10**n.
             '''
