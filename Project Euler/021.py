@@ -1,13 +1,7 @@
 #https://projecteuler.net/problem=21
 
-from gmpy2 import isqrt
-from itertools import combinations
 from tools import findPrimes
-
-'''
-'''
-def primeFactors(n):
-    return 0
+from tools import findDivisors
 
 '''
 '''
@@ -17,7 +11,6 @@ def isAmicable(n):
 '''
 '''
 def findSumAmicable(n):
-    primes = findPrimes(isqrt(n))
-    print primes
+    return 0
     
 print findSumAmicable(10000)

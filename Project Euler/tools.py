@@ -1,6 +1,7 @@
 #Tools used frequently by Project Euler solutions
 
 import re
+from itertools import combinations
 
 '''
 Gets integer grid data from the file data.txt located on the desktop
@@ -76,3 +77,42 @@ def findPrimes(n):
             primes.append(i)
         i += 1
     return primes
+
+'''
+Given an array of primes up to n, finds the prime factors of n and returns them, in ascending order,
+as an array
+'''
+def findPrimeFactors(primesArray, n):
+    primeFactors = []
+    for i in primesArray:
+        while (n % i == 0):
+            n = n / i
+            primeFactors.append(i)
+        if n == 1:
+            break
+    return primeFactors
+
+'''
+Given an array of primes up to n, finds the proper divisors of n and returns them as an array
+Method:
+Factor n into its prime components. For each set containing 1 to x - 1 prime components, where x is
+the number of prime components of n, the product of the elements in that set is a proper divisor. 1
+is also considered a proper divisor.
+'''
+def findDivisors(primesArray, n):
+    primeFactors = findPrimeFactors(primesArray, n)
+    
+    #Uses a set to remove duplicate products
+    divisorPrimeFactors = set()
+    for i in xrange(1, len(primeFactors)):
+        comboIter = combinations(primeFactors, i)
+        for j in comboIter:
+            divisorPrimeFactors.add(j)
+            
+    divisors = [1]
+    for i in divisorPrimeFactors:
+        currentProduct = 1
+        for j in i:
+            currentProduct *= j
+        divisors.append(currentProduct)
+    return divisors
