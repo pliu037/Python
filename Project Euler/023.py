@@ -3,6 +3,7 @@
 from itertools import combinations_with_replacement
 from tools import findPrimes
 from tools import findDivisors
+from gmpy2 import isqrt
 
 '''
 Given an array of primes up to n, determines if n is an abundant number (a number for which the sum of
@@ -16,7 +17,7 @@ def isAbundant(primesArray, n):
 
 #Finds abundant numbers between 1 and maxCheck, exclusive, and returns them as an array
 def getAbundantNumbers(maxCheck):
-    primesArray = findPrimes(maxCheck)
+    primesArray = findPrimes(isqrt(maxCheck))
     abundantNumbers = []
     for i in xrange(1, maxCheck):
         if isAbundant(primesArray, i):

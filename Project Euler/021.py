@@ -2,6 +2,7 @@
 
 from tools import findPrimes
 from tools import findDivisors
+from gmpy2 import isqrt
 
 '''
 '''
@@ -11,6 +12,10 @@ def isAmicable(n):
 '''
 '''
 def findSumAmicable(n):
-    return 0
+    primesArray = findPrimes(isqrt(n))
+    sums = []
+    for i in xrange(1, n):
+        sums.append(sum(findDivisors(primesArray, i)))
+    return sorted(sums)
     
-print findSumAmicable(10000)
+print findSumAmicable(100)

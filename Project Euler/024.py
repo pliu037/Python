@@ -1,6 +1,7 @@
 #https://projecteuler.net/problem=24
 
 from itertools import permutations
+from gmpy2 import fac
 
 '''
 Finds and returns the n-th lexographic permutation of strng

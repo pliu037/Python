@@ -79,8 +79,8 @@ def findPrimes(n):
     return primes
 
 '''
-Given an array of primes up to n, finds the prime factors of n and returns them, in ascending order,
-as an array
+Given an array of primes up to sqrt(n), finds the prime factors of n and returns them, in ascending
+order, as an array
 '''
 def findPrimeFactors(primesArray, n):
     primeFactors = []
@@ -90,10 +90,12 @@ def findPrimeFactors(primesArray, n):
             primeFactors.append(i)
         if n == 1:
             break
+    if n != 1:
+        primeFactors.append(n)
     return primeFactors
 
 '''
-Given an array of primes up to n, finds the proper divisors of n and returns them as an array
+Given an array of primes up to sqrt(n), finds the proper divisors of n and returns them as an array
 Method:
 Factor n into its prime components. For each set containing 1 to x - 1 prime components, where x is
 the number of prime components of n, the product of the elements in that set is a proper divisor. 1
