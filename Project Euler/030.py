@@ -1,10 +1,8 @@
 #https://projecteuler.net/problem=30
 
-from gmpy2 import mpz
-
 #Converts the mpz into a string, sums up the n-th power of the digits, and returns the value
 def findSumDigits(i, n):
-    digits = i.digits()
+    digits = str(i)
     currentSum = 0
     for i in digits:
         currentSum += int(i)**n
@@ -27,7 +25,7 @@ def findSumPowers(n):
 
     currentSum = 0
     for i in xrange(2, digits*9**n):
-        if (i == findSumDigits(mpz(i), n)):
+        if (i == findSumDigits(i, n)):
             currentSum += i
     return currentSum
 

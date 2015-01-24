@@ -1,11 +1,10 @@
 #https://projecteuler.net/problem=34
 
-from gmpy2 import mpz
 from gmpy2 import fac
 
 #Converts the mpz into a string, sums up the factorial of the digits, and returns the value
 def findSumDigits(i):
-    digits = i.digits()
+    digits = str(i)
     currentSum = 0
     for i in digits:
         currentSum += fac(int(i))
@@ -28,7 +27,7 @@ def findSumFactorials():
 
     currentSum = 0
     for i in xrange(3, digits*fac(9)):
-        if (i == findSumDigits(mpz(i))):
+        if (i == findSumDigits(i)):
             currentSum += i
     return currentSum
 
