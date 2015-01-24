@@ -1,28 +1,31 @@
 #https://projecteuler.net/problem=33
 
-from gmpy2 import mpz
 from tools import findPrimes
+from gmpy2 import isqrt
 
 '''
 Determines if x and y are cancellable (removing the same digit from x and y yields x' and y' such that
 x/y = x'/y' and returns True if it is
+Method:
+Removing the same digit from the same position from both x and y is equivalent to subtracting a
+constant from both (x' = x - c and y' = y - c). Given x != y, it is impossible that x/y = x'/y'.
 '''
 def isCancellable(x, y):
-    xDigits = mpz(x).digits()
-    yDigits = mpz(y).digits()
-    flag = False
-    for i in xDigits:
-        if i in yDigits:
-            flag = True
-    if not flag:
-        return False
-    
-    
-    return True
+    if ((x / 10) == (y % 10)):
+        xPrime = x % 10
+        yPrime = y / 10
+        if (xPrime*y == yPrime*x):
+            return True
+    if ((x % 10) == (y / 10)):
+        xPrime = x / 10
+        yPrime = y % 10
+        if (xPrime*y == yPrime*x):
+            return True
+    return False
 
 '''
-Removes all common factors from both x and y (reduced x and y to be coprime) and returns the tuple
-(x, y)
+Given an array of primes up to sqrt(max(x, y)), removes all common factors from both x and y (reduces
+x and y to be coprime) and returns the tuple (x, y)
 '''
 def reducedForm(primesArray, x, y):
     for i in primesArray:
@@ -38,17 +41,18 @@ def reducedForm(primesArray, x, y):
     return (x, y)
 
 '''
-Finds and returns the product of the denominators of the reduced form of all fractions of form i/j
-such that 10 <= i < j < 100 and removing the same digit from i and j yields i' and j' such that i/j =
-i'/j'
+Finds and returns the denominator of the reduced form of the product of all fractions of the form i/j
+such that 10 < i < j < 100 and removing the same digit from i and j, i' and j', yields i/j = i'/j'
 '''
 def findProductCancellableFractions():
-    primesArray = findPrimes(10)
-    product = 1
-    for i in xrange(10, 100):
+    productNumerator = 1
+    productDenominator = 1
+    for i in xrange(11, 100):
         for j in xrange(i + 1, 100):
             if isCancellable(i, j):
-                product *= reducedForm(primesArray, i, j)[1]
-    return product
+                productNumerator *= i
+                productDenominator *= j
+    return reducedForm(findPrimes(isqrt(productDenominator)), productNumerator, productDenominator)[1]
 
 print findProductCancellableFractions()
+print 

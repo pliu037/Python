@@ -3,7 +3,7 @@
 from gmpy2 import is_square
 
 '''
-Finds and returns the lowest x such that (x**2 - 1) / i is a positive integer square
+Finds and returns the lowest x such that (x**2 - 1) / i is the square of a positive integer
 Method:
 Brute force search is way too slow.
 '''
