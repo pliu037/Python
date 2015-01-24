@@ -1,4 +1,4 @@
-#https://projecteuler.net/problem=29
+#https://projecteuler.net/problem=66
 
 from gmpy2 import is_square
 

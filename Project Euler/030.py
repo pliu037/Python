@@ -27,9 +27,8 @@ def findSumPowers(n):
 
     currentSum = 0
     for i in xrange(2, digits*9**n):
-        check = mpz(i)
-        if (check == findSumDigits(check, n)):
-            currentSum += check
+        if (i == findSumDigits(mpz(i), n)):
+            currentSum += i
     return currentSum
 
 print findSumPowers(5)
