@@ -7,10 +7,8 @@ def findConsecPrimeSum(n):
     primesArray = findPrimes(n)
     numPrimes = len(primesArray)
     
-    #Creates a dictionary containing the primes for constant-time lookup of whether a sum is prime
-    primesDic = {}
-    for i in primesArray:
-        primesDic[i] = 1
+    #Creates a set containing the primes for constant-time lookup of whether a sum is prime
+    primesSet = set(primesArray)
         
     maxConsec = 1
     maxSum = 0
@@ -34,7 +32,7 @@ def findConsecPrimeSum(n):
         currentSum = 0
         while ((currentSum < n) and (i + j < numPrimes)):
             currentSum += primesArray[i + j]
-            if currentSum in primesDic:
+            if currentSum in primesSet:
                 if j > maxConsec:
                     maxConsec = j
                     maxSum = currentSum

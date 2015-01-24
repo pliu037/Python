@@ -138,7 +138,6 @@ def getNumLetters(n):
     sumLetters = 0
     for i in xrange(1, n + 1):
         strng = getNumString(i)
-        print strng
         sumLetters += len(strng)
     return sumLetters
     

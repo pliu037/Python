@@ -45,4 +45,3 @@ def getNextTriPentHex(n):
         start += 1
     
 print getNextTriPentHex(285)
-print isqrt(1020304050607080900)
