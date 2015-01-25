@@ -14,9 +14,10 @@ swapping it with the (n/fac(i - 1) + 1)-th position. After this iteration, the f
 the correct value. Sort the remaining i - 1 positions and, using the reduced n, repeat the process for
 the sublist of length i - 1. After j iterations, the first j positions will be correct.
 Observation:
-Runs in O(i) time, where i is the number of digits, as opposed to the O(i!) time of the below solution.
+Runs in O(i) time, where i is the number of elements, as opposed to the O(i!) time of the below
+solution.
 '''
-def myLexographicPermutation(strng, n):
+def lexographicPermutation(strng, n):
     n -= 1
     elements = sorted(strng)
     for i in xrange(len(elements) - 1):
@@ -30,11 +31,11 @@ def myLexographicPermutation(strng, n):
     return elements
     
 #Finds and returns the n-th lexographic permutation of strng
-def lexographicPermutation(strng, n):
+def lexographicPermutationBrute(strng, n):
     iterator = permutations(sorted(strng), len(strng))
     for _i in xrange(n - 1):
         iterator.next()
     return iterator.next()
     
-print lexographicPermutation('000123456789', 100000000)
-print myLexographicPermutation('000123456789', 100000000)
+print lexographicPermutation('0123456789', 1000000)
+print lexographicPermutationBrute('0123456789', 1000000)

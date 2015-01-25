@@ -122,7 +122,7 @@ def getNumString(n):
     i = 0
     while ((n >= 10**(3*(i)))):
         
-        #(n % (10**(3*(i + 1)))) / (10**(3*i)) are the digits between 10**(3*(i+1)) and 10**(3*i)
+        #(n % (10**(3*(i + 1)))) / (10**(3*i)) are the digits between 10**(3*(i + 1)) and 10**(3*i)
         if ((n % (10**(3*(i + 1)))) / (10**(3*i)) != 0):
             strng = UNITS[i] + strng
             strng = getHundreds((n % (10**(3*(i + 1)))) / (10**(3*i))) + strng
