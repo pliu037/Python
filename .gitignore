@@ -1,8 +1,7 @@
 #################
-## Eclipse
+## IntelliJ
 #################
 
-*.pydevproject
-.project
-.metadata/
+.idea/
+*.iml
 *.pyc
