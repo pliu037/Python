@@ -16,7 +16,7 @@ def findX(i):
                 return x
         x += 1
 
-'''        
+'''
 Finds and returns the value of i that maximizes, for 2 <= i <= n, the minimum value of x that
 satisfies (x**2 - 1) / i being a perfect square
 '''
