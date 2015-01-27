@@ -23,12 +23,12 @@ def findConsecNUniquePrimeFactors(n):
 
         length = len(distinctPrimeFactors)
         if (length >= n and distinctPrimeFactors[length - 1] == n):
-            flag = True
+            isConsecutive = True
             for j in xrange(1, n):
                 if distinctPrimeFactors[length - j - 1] != n:
-                    flag = False
+                    isConsecutive = False
                     break
-            if flag:
+            if isConsecutive:
                 return i - n + 1
         i += 1
 

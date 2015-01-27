@@ -32,7 +32,7 @@ def lexographicPermutation(strng, n):
     
 #Finds and returns the n-th lexographic permutation of strng
 def lexographicPermutationBrute(strng, n):
-    iterator = permutations(sorted(strng), len(strng))
+    iterator = permutations(sorted(strng))
     for _i in xrange(n - 1):
         iterator.next()
     return iterator.next()
