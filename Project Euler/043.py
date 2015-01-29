@@ -22,7 +22,7 @@ def satisfiesConditions(n):
 Finds and returns the sum of all permutations of '0123456789' that satisfy the conditions specified
 in satisfiesConditions(n)
 Observation:
-Can generate 0-9 pandigitals that satisfy the conditions rather than checking all permutations,
+Can generate 0-9 pandigitals that satisfy the conditions rather than checking all permutations
 '''
 def sumSatisfiesCondition():
     currentSum = 0
