@@ -32,4 +32,3 @@ def findSumFactorials():
     return currentSum
 
 print findSumFactorials()
-            

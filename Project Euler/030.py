@@ -30,4 +30,3 @@ def findSumPowers(n):
     return currentSum
 
 print findSumPowers(5)
-            

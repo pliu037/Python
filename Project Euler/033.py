@@ -55,4 +55,3 @@ def findProductCancellableFractions():
     return reducedForm(findPrimes(isqrt(productDenominator)), productNumerator, productDenominator)[1]
 
 print findProductCancellableFractions()
-print 

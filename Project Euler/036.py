@@ -1,29 +1,27 @@
 #https://projecteuler.net/problem=36
 
-'''
-Generates <digits>-length palindromes in lexographic order
-Method:
-
-'''
+#Generates <digits>-length palindromes in lexographic order
 class PalindromeGenerator:
     def __init__(self, digits):
         self.digits = digits
         self.odd = (digits % 2 != 0)
-        self.current = 10**((digits + 1)/2 - 1) - 1
+
+        #The first half of the palindrome defines the second half, but it can't have leading zeroes
+        self.current = 10**((digits + 1)/2 - 1)
 
     def __iter__(self):
         return self
 
     def next(self):
-        self.current += 1
         if self.current >= 10**((self.digits + 1)/2):
             raise StopIteration()
         digitArray = ['0' for _i in xrange(self.digits)]
         base = str(self.current)
+        self.current += 1
         for i in xrange(len(base)):
             digitArray[i] = base[i]
             digitArray[self.digits - 1 - i] = base[i]
-        return int(''.join(i for i in digitArray))
+        return int(''.join(digitArray))
 
 #Given a string, strng, returns True if it is a palindrome
 def isPalindrome(strng):

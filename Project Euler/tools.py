@@ -15,7 +15,7 @@ def get2DData():
     data = []
     line = f.readline()
     while line != '':
-        lineParsed = line.split()
+        lineParsed = re.split(' |,', line)
         lineParsed = map(int, lineParsed)
         data.append(lineParsed)
         line = f.readline()
