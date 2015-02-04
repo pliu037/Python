@@ -11,6 +11,7 @@ Generate 0-9 pandigitals that satisfy the conditions rather than checking all pe
 '''
 def sumSatisfiesCondition():
     currentSum = 0
+
     return currentSum
 
 '''
@@ -37,10 +38,11 @@ def sumSatisfiesConditionBrute():
     currentSum = 0
     permIter = permutations('0123456789')
     for i in permIter:
-        check = ''.join(i)
-        if satisfiesConditions(check):
-            currentSum += int(check)
+        if i[0] != '0':
+            check = ''.join(i)
+            if satisfiesConditions(check):
+                currentSum += int(check)
     return currentSum
 
-print sumSatisfiesCondition()
+#print sumSatisfiesCondition()
 print sumSatisfiesConditionBrute()

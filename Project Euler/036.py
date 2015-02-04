@@ -1,5 +1,7 @@
 #https://projecteuler.net/problem=36
 
+from tools import isPalindrome
+
 #Generates <digits>-length palindromes in lexographic order
 class PalindromeGenerator:
     def __init__(self, digits):
@@ -22,13 +24,6 @@ class PalindromeGenerator:
             digitArray[i] = base[i]
             digitArray[self.digits - 1 - i] = base[i]
         return int(''.join(digitArray))
-
-#Given a string, strng, returns True if it is a palindrome
-def isPalindrome(strng):
-    for i in xrange((len(strng) + 1)/2):
-        if strng[i] != strng[len(strng) - 1 - i]:
-            return False
-    return True
 
 '''
 Finds and returns the sum of all numbers with up to n digits, inclusive, that are palindromes in

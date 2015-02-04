@@ -51,6 +51,13 @@ def isPermutation(x, y):
     bag2 = sorted(str(y))
     return bag1 == bag2
 
+#Given a string, strng, returns True if it is a palindrome
+def isPalindrome(strng):
+    for i in xrange((len(strng) + 1)/2):
+        if strng[i] != strng[len(strng) - 1 - i]:
+            return False
+    return True
+
 '''
 Return an array of all primes, in ascending order, up to n, exclusive
 Method:

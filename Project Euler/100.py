@@ -5,7 +5,8 @@ from gmpy2 import is_square
 from gmpy2 import isqrt
 
 '''
-
+Given x discs, y of which are blue, finds y such that the probability of drawing two blue discs in a
+row is exactly 50% and x > n.
 Method:
 Brute force search is way too slow.
 '''

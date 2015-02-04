@@ -30,6 +30,7 @@ def combinationThreshold(threshold, max):
         that x choose i <= threshold for i < n < x/2 and the symmetrical nature of choose (for every
         i below x/2 such that x choose i <= threshold, there is an i above x/2 that satisfies the
         same condition), then 2*n of the possible x + 1 values of i yield x choose i <= threshold.
+        This should reduce running time from O(max**2) (brute force) to O(max).
         '''
         while choose(x, (check - (offset + 1))) > threshold:
             offset += 1
