@@ -45,6 +45,14 @@ def getWordValue(name):
         currentSum += ord(i) - ord('A') + 1
     return currentSum
 
+#Converts i into a string, sums up the n-th power of the digits, and returns the value
+def findSumDigits(i, n):
+    digits = str(i)
+    currentSum = 0
+    for i in digits:
+        currentSum += int(i)**n
+    return currentSum
+
 #Checks whether x is a permutation of y and returns True if it is
 def isPermutation(x, y):
     bag1 = sorted(str(x))

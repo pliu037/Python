@@ -11,7 +11,7 @@ a + b + c <= n. By the triangle inequality, (a + b >= c) <=> (a + b + c >= 2c) <
 >= 2c) <=> (n >= 2c) <=> (c <= n/2). If b > a, (a**2 + b**2 = c**2) <=> (2b**2 > c**2) <=> (b >
 c/sqrt(2)) and (2a**2 < c**2) <=> (a < c/sqrt(2)). If b < a, b < c/sqrt(2) and a > c/sqrt(2). Thus,
 for every b below c/sqrt(2), there is an a above c/sqrt(2) and vice versa. Since a and b are
-interchangeable, to avoid double-counting, b is only checked up to c/sqrt(2).
+symmetric, to avoid double-counting, b is only checked up to c/sqrt(2).
 Observation:
 Using an algorithm that generates only and all primitive Pythagorean triplets may result in faster
 running time.

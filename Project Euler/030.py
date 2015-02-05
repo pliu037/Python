@@ -1,12 +1,6 @@
 #https://projecteuler.net/problem=30
 
-#Converts the mpz into a string, sums up the n-th power of the digits, and returns the value
-def findSumDigits(i, n):
-    digits = str(i)
-    currentSum = 0
-    for i in digits:
-        currentSum += int(i)**n
-    return currentSum
+from tools import findSumDigits
 
 '''
 Finds and returns the sum of integers whose sum of the n-th power of their digits is equal to that
