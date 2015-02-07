@@ -1,7 +1,10 @@
 '''
 https://projecteuler.net/problem=31
 https://projecteuler.net/problem=76
+https://projecteuler.net/problem=77
 '''
+
+from tools import findPrimes
 
 '''
 Recursively finds the number of combinations that obtain a target value, i, given the denominations
@@ -60,5 +63,14 @@ def combinations (denominations, n):
     values = {}
     return recCombinations(sortedDenom, values, n)
 
+#Finds and returns the first integer that can be written as the sum of primes in over n ways
+def lowestcombinations(n):
+    primesArray = findPrimes(n)
+    i = 2
+    while (combinations(primesArray, i) <= n):
+        i += 1
+    return i
+
 print combinations([1, 2, 5, 10, 20, 50, 100, 200], 200)
 print combinations([i for i in xrange(1, 100)], 100)
+print lowestcombinations(5000)

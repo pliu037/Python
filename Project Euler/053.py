@@ -4,7 +4,10 @@ from gmpy2 import fac
 
 #Calculates and returns x choose n
 def choose(x, n):
-    return fac(x)/(fac(x - n)*fac(n))
+    currentProduct = 1
+    for i in xrange(n):
+        currentProduct *= x - i
+    return currentProduct/fac(n)
 
 #Finds and returns the number of pairs, x, n, such that x choose n > threshold for 1 <= x <= max
 def combinationThreshold(threshold, max):

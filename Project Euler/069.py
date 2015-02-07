@@ -13,8 +13,8 @@ i/phi(i) = i/(i(1 - 1/p_1)(1 - 1/p_2)(1 - 1/p_3)...) = 1/((1 - 1/p_1)(1 - 1/p_2)
 Since a prime factor with power greater than 1 increases i without increasing i/phi(i), if i has
 prime factors with power greater than 1, then for i', the product of distinct prime factors of i,
 i' < i and i/phi(i) = i'/phi(i'). Furthermore, because p/(p - 1) > 1 and is larger for smaller p,
-maximizing (p_1/(p_1 - 1))(p_2/(p_2 - 1))(p_3/(p_3 - 1))... is achieved by multiplying the smallest,
-distinct primes such that the product is smaller or equal to n.
+maximizing (p_1/(p_1 - 1))(p_2/(p_2 - 1))(p_3/(p_3 - 1))... is achieved by selecting primes in
+ascending order such that their product is smaller or equal to n.
 Observation:
 Runs in O(log(n)) time as opposed to the O(n*sqrt(n)) time of the below solution.
 '''
