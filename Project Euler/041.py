@@ -2,14 +2,8 @@
 
 from itertools import permutations
 from tools import findPrimes
+from tools import checkPrime
 from gmpy2 import isqrt
-
-#Given an array of primes up to at least sqrt(n), returns True if n is prime
-def checkPrime(primesArray, n):
-    for i in primesArray:
-        if (n % i == 0) and (i < isqrt(n)):
-            return False
-    return True
 
 '''
 Finds and the returns the largest up-to-n pandigital prime (an n-pandigital number contains each digit

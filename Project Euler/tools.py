@@ -2,6 +2,7 @@
 
 import re
 from itertools import combinations
+from gmpy2 import isqrt
 
 '''
 Gets integer grid data from the file data.txt located on the desktop
@@ -63,6 +64,13 @@ def isPermutation(x, y):
 def isPalindrome(strng):
     for i in xrange((len(strng) + 1)/2):
         if strng[i] != strng[len(strng) - 1 - i]:
+            return False
+    return True
+
+#Given an array of primes up to at least sqrt(n), returns True if n is prime
+def checkPrime(primesArray, n):
+    for i in primesArray:
+        if (n % i == 0) and (i <= isqrt(n)):
             return False
     return True
 
