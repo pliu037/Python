@@ -57,20 +57,28 @@ def recCombinations(denomList, values, i):
 Given a list of denominations and a target value, n, finds and returns the number of combinations
 that yield exactly n
 '''
-def combinations (denominations, n):
+def combinations(denominations, n):
     sortedDenom = sorted(denominations)
     sortedDenom.reverse()
     values = {}
     return recCombinations(sortedDenom, values, n)
 
 #Finds and returns the first integer that can be written as the sum of primes in over n ways
-def lowestcombinations(n):
+def lowestCombinations(n):
     primesArray = findPrimes(n)
     i = 2
-    while (combinations(primesArray, i) <= n):
+    j = 1
+
+    #Optimization: Only pass in primes less than or equal to the i being checked.
+    tempPrimesArray = primesArray[:j]
+    while (combinations(tempPrimesArray, i) <= n):
         i += 1
+        if i >= primesArray[j]:
+            j += 1
+            tempPrimesArray = primesArray[:j]
+
     return i
 
 print combinations([1, 2, 5, 10, 20, 50, 100, 200], 200)
 print combinations([i for i in xrange(1, 100)], 100)
-print lowestcombinations(5000)
+print lowestCombinations(5000)
