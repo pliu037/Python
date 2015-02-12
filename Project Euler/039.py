@@ -17,7 +17,7 @@ Using an algorithm that generates only and all primitive Pythagorean triplets ma
 running time.
 '''
 def findMaxPythagoreanTriplets(n):
-    counts = [0 for _i in xrange(n + 2)]
+    counts = [0 for _i in xrange(n + 1)]
     c = 5
     while c < n/2:
         b = 1

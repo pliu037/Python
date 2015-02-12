@@ -16,10 +16,8 @@ def findPrimeSequence(n):
         i += 1
     primesArray = primesArray[i:]
     
-    #Creates a dictionary containing the primes for constant-time lookup of whether a sum is prime
-    primesDic = {}
-    for i in primesArray:
-        primesDic[i] = 1
+    #Creates a set containing the primes for constant-time lookup of whether a sum is prime
+    primesSet = set(primesArray)
     
     '''
     Iterate through the array of primes, in ascending order, to serve as the base. For each base,
@@ -46,7 +44,7 @@ def findPrimeSequence(n):
             
             if isPermutation(primesArray[i], primesArray[j]):
                 if isPermutation(primesArray[i], 2*primesArray[j] - primesArray[i]):
-                    if ((2*primesArray[j] - primesArray[i]) in primesDic):
+                    if ((2*primesArray[j] - primesArray[i]) in primesSet):
                         print primesArray[i], primesArray[j], 2*primesArray[j] - primesArray[i]
             j += 1
     
