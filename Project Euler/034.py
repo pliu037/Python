@@ -1,14 +1,7 @@
 #https://projecteuler.net/problem=34
 
 from gmpy2 import fac
-
-#Converts the mpz into a string, sums up the factorial of the digits, and returns the value
-def findSumDigits(i):
-    digits = str(i)
-    currentSum = 0
-    for i in digits:
-        currentSum += fac(int(i))
-    return currentSum
+from tools import findSumFacDigits
 
 '''
 Finds and returns the sum of integers whose sum of the factorial of their digits is equal to that
@@ -27,7 +20,7 @@ def findSumFactorials():
 
     currentSum = 0
     for i in xrange(3, digits*fac(9)):
-        if (i == findSumDigits(i)):
+        if (i == findSumFacDigits(i)):
             currentSum += i
     return currentSum
 

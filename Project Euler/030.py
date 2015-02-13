@@ -1,6 +1,6 @@
 #https://projecteuler.net/problem=30
 
-from tools import findSumDigits
+from tools import findSumPowerDigits
 
 '''
 Finds and returns the sum of integers whose sum of the n-th power of their digits is equal to that
@@ -19,7 +19,7 @@ def findSumPowers(n):
 
     currentSum = 0
     for i in xrange(2, digits*9**n):
-        if (i == findSumDigits(i, n)):
+        if (i == findSumPowerDigits(i, n)):
             currentSum += i
     return currentSum
 

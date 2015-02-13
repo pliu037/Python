@@ -29,7 +29,7 @@ Method:
 i/phi(i) = i/(i(1 - 1/p_1)(1 - 1/p_2)(1 - 1/p_3)...) = 1/((1 - 1/p_1)(1 - 1/p_2)(1 - 1/p_3)...) =
 1/(((p_1 - 1)/p_1)(p_2 - 1)/p_2)(p_3 - 1)/p_3)...) = (p_1/(p_1 - 1))(p_2/(p_2 - 1))(p_3/(p_3 - 1))...
 Minimizing (p_1/(p_1 - 1))(p_2/(p_2 - 1))(p_3/(p_3 - 1))... is equivalent to maximizing
-((p_1 - 1)/p_1)((p_2 - 1)/p_2)((p_3 - 1)/p_3)...
+((p_1 - 1)/p_1)((p_2 - 1)/p_2)((p_3 - 1)/p_3)... As (p - 1)/p < 1
 - show that this is achieved when there are only two prime factors
 - show a lower bound on the values needing to be tested (for both primes and the composite)
 '''
@@ -57,7 +57,7 @@ def findLowestPhiPermutationBrute(n):
     currentMin = 0
     currentMinValue = n
     i = n
-    while i > 4*n/5:
+    while i > 1:
         primesSet = findPrimeFactors(primesArray, i)
         phi = findPhi(primesSet, i)
         check = i/phi

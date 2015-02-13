@@ -3,6 +3,7 @@
 import re
 from itertools import combinations
 from gmpy2 import isqrt
+from gmpy2 import fac
 
 '''
 Gets integer grid data from the file data.txt located on the desktop
@@ -47,11 +48,19 @@ def getWordValue(name):
     return currentSum
 
 #Converts i into a string, sums up the n-th power of the digits, and returns the value
-def findSumDigits(i, n):
+def findSumPowerDigits(i, n):
     digits = str(i)
     currentSum = 0
     for i in digits:
         currentSum += int(i)**n
+    return currentSum
+
+#Converts i into a string, sums up the factorial of the digits, and returns the value
+def findSumFacDigits(i):
+    digits = str(i)
+    currentSum = 0
+    for i in digits:
+        currentSum += fac(int(i))
     return currentSum
 
 #Checks whether x is a permutation of y and returns True if it is

@@ -2,7 +2,7 @@
 
 from itertools import combinations_with_replacement
 from gmpy2 import fac
-from tools import findSumDigits
+from tools import findSumPowerDigits
 
 #Finds and returns the number of permutations of the given set of digits
 def numPermutations(combo):
@@ -55,7 +55,7 @@ def followSumSquareDigits(ones, eightynines, n):
     if n == 0:
         return None
 
-    result = followSumSquareDigits(ones, eightynines, findSumDigits(n, 2))
+    result = followSumSquareDigits(ones, eightynines, findSumPowerDigits(n, 2))
 
     #Memoizes whether a given value's chain terminates with 1 or 89
     if result == 1:
