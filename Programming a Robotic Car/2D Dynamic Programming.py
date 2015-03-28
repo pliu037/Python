@@ -13,10 +13,10 @@ delta = [[-1, 0 ], # go up
 
 delta_name = ['^', '<', 'v', '>'] # Use these when creating your policy grid.
 
-success_prob = 0.5                      
+success_prob = 0.5
 failure_prob = (1.0 - success_prob)/2.0 # Probability(stepping left) = prob(stepping right) = failure_prob
-collision_cost = 100                    
-cost_step = 1        
+collision_cost = 100
+cost_step = 1
                      
 
 def direction_cost(value, i, j, direction):
