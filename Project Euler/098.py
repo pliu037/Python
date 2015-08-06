@@ -25,15 +25,15 @@ def getAnagrams(list, keyFunc):
         anagrams.pop(remove)
     return anagrams
 
-#
+#Returns the letters that form <word> as a sorted tuple
 def getWordKey(word):
     return tuple(sorted(word))
 
-#
+#Returns the digits that form n as a sorted tuple
 def getNumberKey(n):
     return tuple(sorted(str(n)))
 
-#
+#Returns the number of each individual symbol in x as a sorted tuple
 def getSymbolKey(x):
     dic = {}
     for y in x:
