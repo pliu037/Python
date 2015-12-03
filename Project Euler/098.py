@@ -6,8 +6,10 @@ from itertools import combinations
 
 '''
 Given a list of some type (e.g.: String, Integer, etc.) and a function that maps an instance of that
-type into a tuple of its composites (e.g.: characters and digits, respectively), returns a hash of
-
+type into a tuple of its composites (e.g.: characters and digits, respectively), returns a hash in
+which keys are composite tuples and values are lists of instances that are formed by the given
+tuple. Any key-value pairs for which the length of its value list is less than 2 is removed prior to
+returning the hash, effectively returning only pairs/triplets/etc. of anagrams.
 '''
 def getAnagrams(list, keyFunc):
     anagrams = {}

@@ -1,6 +1,10 @@
 #https://projecteuler.net/problem=54
 
 class Hand:
+
+    '''
+
+    '''
     def __init__(self, hand):
         self.cards = [[x, y] for x, y in hand]
         for card in self.cards:
@@ -22,6 +26,7 @@ class Hand:
         self.counts = sorted(map(lambda x: (x[1], x[0]), values), reverse=True)
         self.straight = None
 
+    #
     def countMultiples(self, cards, valueFunc):
         counts = {}
         for card in cards:
@@ -33,11 +38,13 @@ class Hand:
         sortedCounts = sorted([(key, counts[key]) for key in counts], reverse=True)
         return sortedCounts
 
+    #
     def isFlush(self):
         if len(self.suits) == 1:
             return True
         return False
 
+    #
     def isStraight(self):
         if self.straight != None:
             return self.straight
@@ -53,6 +60,7 @@ class Hand:
         self.straight = False
         return False
 
+    #
     def parseHand(self):
         if self.isFlush() and self.isStraight():
             return (9, self.cards[0][0])
@@ -73,12 +81,14 @@ class Hand:
         else:
             return tuple([1] + [x[0] for x in self.cards])
 
+    #
     def compareTo(self, other_hand):
         if self.parseHand() > other_hand.parseHand():
             return 1
         else:
             return 2
 
+#Reads in the hands
 def getHands():
     f = open('C:/Users/Peng/Desktop/data.txt', 'r')
     data = []
