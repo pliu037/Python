@@ -9,7 +9,6 @@ def simple_linear_regression(input_feature, output):
         sum_input_output += input_feature[i]*output[i]
         sum_input_squared += input_feature[i]**2
 
-    #return gradientDescent(len(input_feature), sum_input, sum_output, sum_input_output, sum_input_squared)
     return closedForm(len(input_feature), sum_input, sum_output, sum_input_output, sum_input_squared)
 
 def closedForm(n, sum_input, sum_output, sum_input_output, sum_input_squared):
