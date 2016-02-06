@@ -3,7 +3,8 @@
 class Hand:
 
     '''
-
+    Given a hand with TJQKA values, replaces the letter representation with a numeric representation
+    and then counts the number of any given value or suit
     '''
     def __init__(self, hand):
         self.cards = [[x, y] for x, y in hand]
@@ -26,7 +27,7 @@ class Hand:
         self.counts = sorted(map(lambda x: (x[1], x[0]), values), reverse=True)
         self.straight = None
 
-    #
+    #Given an array of cards
     def countMultiples(self, cards, valueFunc):
         counts = {}
         for card in cards:
@@ -38,13 +39,13 @@ class Hand:
         sortedCounts = sorted([(key, counts[key]) for key in counts], reverse=True)
         return sortedCounts
 
-    #
+    #Returns true if the hand is a flush and false otherwise
     def isFlush(self):
         if len(self.suits) == 1:
             return True
         return False
 
-    #
+    #Returns true if the hand is a straight and false otherwise, caching the calculated value
     def isStraight(self):
         if self.straight != None:
             return self.straight
@@ -60,7 +61,12 @@ class Hand:
         self.straight = False
         return False
 
-    #
+    '''
+    Parses the hand and returns a tuple, with the first value corresponding to the class of hand
+    (e.g.: straight flush, three-of-a-kind) and subsequent values corresponding to tie-breaker
+    values between hands of the same class (e.g.: the highest value of a flush or straight, the
+    value of three-of-a-kind). This works since the comparator operator compares tuples lazily.
+    '''
     def parseHand(self):
         if self.isFlush() and self.isStraight():
             return (9, self.cards[0][0])
@@ -81,14 +87,14 @@ class Hand:
         else:
             return tuple([1] + [x[0] for x in self.cards])
 
-    #
+    #Returns 1 if the this hand wins or 2 otherwise
     def compareTo(self, other_hand):
         if self.parseHand() > other_hand.parseHand():
             return 1
         else:
             return 2
 
-#Reads in the hands
+#Reads in and returns the list of hands from the file
 def getHands():
     f = open('C:/Users/Peng/Desktop/data.txt', 'r')
     data = []
