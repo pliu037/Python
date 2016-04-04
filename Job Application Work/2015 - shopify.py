@@ -196,7 +196,7 @@ def findMinCostOfMaxTypes(capacity, productTypes):
 
 
 # Capacity is 100 kg, but variant weight is given in grams
-findMinCostOfMaxTypes(40000, ['Keyboard', 'Computer'])
+findMinCostOfMaxTypes(100000, ['Keyboard', 'Computer'])
 
 test = [(2, 0), (2, 1), (2, 1)]
 test2 = [(1, 0), (0, 1), (1, 0)]
