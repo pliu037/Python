@@ -13,7 +13,7 @@ file (x representing rows, y representing columns)
 Returns the 2D array
 '''
 def get2DData():
-    f = open('C:/Users/Peng/Desktop/data.txt', 'r')
+    f = open('C:/Users/pengl/Desktop/data.txt', 'r')
     data = []
     line = f.readline()
     while line != '':
@@ -30,7 +30,7 @@ Removes all "s from the list then splits the list into an array of names
 Returns the array
 '''
 def getWordData():
-    f = open('C:/Users/Peng/Desktop/data.txt', 'r')
+    f = open('C:/Users/pengl/Desktop/data.txt', 'r')
     data = []
     line = f.readline()
     while line != '':

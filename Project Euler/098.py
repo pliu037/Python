@@ -45,8 +45,15 @@ def getSymbolKey(x):
             dic[y] = 1
     return tuple(sorted(dic.values()))
 
-#
-def checkMatch(wordPair, numberPair, maxValue):
+'''
+Given an anagram pair and its corresponding potential numeric anagram pair, checks whether there
+is a one-to-one mapping between characters in the anagrams and the digits in the numeric anagrams,
+returning the max value if there is a match and 0 otherwise
+Observation:
+If there is a match, which word gets matched with which number does not matter for generating the
+mapping
+'''
+def checkMatch(wordPair, numberPair):
     mapping = {}
     for i in xrange(len(wordPair[0])):
         mapping[wordPair[0][i]] = str(numberPair[0])[i]
@@ -55,19 +62,31 @@ def checkMatch(wordPair, numberPair, maxValue):
             return 0
     return max(numberPair)
 
-#
+'''
+Given a group of anagrams and groups of numeric anagrams, checks to see if any pair of anagrams
+matches a pair of numeric anagrams (a group can consist of more than two elements; e.g.: 321 ≡ 123
+≡ 213), returning the max value of all matches (the max value from previous checks is passed in for
+an optimization - only groups of numeric anagrams that could yield a higher value are checked)
+'''
 def checkAnagrams(wordAnagrams, numberAnagrams, maxValue):
     for wordPair in combinations(wordAnagrams, 2):
         for numbers in numberAnagrams:
             if max(numbers) > maxValue:
                 for numberPair in combinations(numbers, 2):
-                    value = checkMatch(wordPair, numberPair, maxValue)
+                    value = checkMatch(wordPair, numberPair)
                     if value > maxValue:
                         maxValue = value
     return maxValue
 
 '''
-
+Given a list of words, find the maximum value of a pair of anagrams such that substituting the same
+characters with the same digits in both words both yield perfect squares
+Method:
+Groups words/squares on their character/digit composition. Every group of numeric anagrams is
+further grouped based on the counts of their digits (e.g.: 113 and 131 would be in the same group as
+722 and 272 since the digit counts in both cases is (2, 1)). Then, every group of anagrams is
+checked for actual matching against groups of numerical anagrams with the same digit counts as the
+character count of the anagram group.
 '''
 def findLargestSqAnagram():
     words = getWordData()
@@ -85,6 +104,7 @@ def findLargestSqAnagram():
         squares.append(i**2)
         i += 1
     sqAnagrams = getAnagrams(squares, getNumberKey)
+
     symbolAnagrams = {}
     for key in sqAnagrams:
         check = getSymbolKey(key)
@@ -92,13 +112,12 @@ def findLargestSqAnagram():
             symbolAnagrams[check].append(sqAnagrams[key])
         else:
             symbolAnagrams[check] = [sqAnagrams[key]]
+
     maxValue = 0
     for key in wordAnagrams:
         check = getSymbolKey(key)
         if check in symbolAnagrams:
-            value = checkAnagrams(wordAnagrams[key], symbolAnagrams[check], maxValue)
-            if value > maxValue:
-                maxValue = value
+            maxValue = checkAnagrams(wordAnagrams[key], symbolAnagrams[check], maxValue)
     return maxValue
 
 print findLargestSqAnagram()

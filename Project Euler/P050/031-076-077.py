@@ -58,8 +58,7 @@ Given a list of denominations and a target value, n, finds and returns the numbe
 that yield exactly n
 '''
 def combinations(denominations, n):
-    sortedDenom = sorted(denominations)
-    sortedDenom.reverse()
+    sortedDenom = sorted(denominations, reverse=True)
     values = {}
     return recCombinations(sortedDenom, values, n)
 
