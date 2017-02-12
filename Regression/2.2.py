@@ -27,4 +27,4 @@ def getData(file_path, input_names, output_names):
 
     return input_data, output_data
 
-input, output = getData("D:\Work\Programming\Python\Regression\kc_house_train_data.csv", ["sqft_living"], ["price"])
+input, output = getData("kc_house_train_data.csv", ["sqft_living"], ["price"])

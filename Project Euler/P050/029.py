@@ -5,7 +5,7 @@ from gmpy2 import mpz
 '''
 Finds and returns the number of distinct terms for a**b with 2 <= a, b <= n
 Method:
-subtract the number of repetitions from (n - 1)**2. This should be both more memory efficient and
+Subtract the number of repetitions from (n - 1)**2. This should be both more memory efficient and
 more processor efficient.
 '''
 def distinctTerms(n):
