@@ -23,6 +23,7 @@ def nextPrime(primesArray, n):
         check += 1
     return check
 
+# TODO
 '''
 Finds and returns i < n such that phi(i) is a permutation of i and which minimizes i/phi(i)
 Method:

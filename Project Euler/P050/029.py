@@ -8,6 +8,7 @@ Method:
 Subtract the number of repetitions from (n - 1)**2. This should be both more memory efficient and
 more processor efficient.
 '''
+# TODO
 def distinctTerms(n):
     count = (n - 1)**2
     return count

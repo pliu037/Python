@@ -14,6 +14,7 @@ def sumSatisfiesCondition():
 
     return currentSum
 
+# TODO
 '''
 Checks if n satisfies the following conditions and returns True if it does: n[1:4] divisible by 2,
 n[2:5] divisible by 3, n[3:6] divisible by 5, n[4:7] divisible by 7, n[5:8] divisible by 11, n[6:9]

@@ -1,5 +1,6 @@
 # https://projecteuler.net/problem=61
 
+
 class Chain:
     def __init__(self, chain, product):
         self.chain = chain
@@ -14,7 +15,7 @@ class Chain:
         return self.__str__()
 
 
-def addToDic(dic, values):
+def add_to_dic(dic, values):
     keys = [2, 3, 5, 7, 11, 13]
     if 1 not in dic:
         dic[1] = {}
@@ -26,10 +27,10 @@ def addToDic(dic, values):
                 dic[1][keys[index]] = [Chain([value], keys[index])]
 
 
-'''
+def get_valid_numbers():
+    """
 
-'''
-def getValidNumbers():
+    """
     # 19 is the point below which the largest function, octagonal, yields 3-digit numbers
     i = 19
     dic = {}
@@ -43,23 +44,24 @@ def getValidNumbers():
         values.append(i*(2*i - 1))    # hexagonal
         values.append(i*(5*i- 3)/2)   # heptagonal
         values.append(i*(3*i - 2))    # octagonal
-        addToDic(dic, values)
+        add_to_dic(dic, values)
         i += 1
     return dic
 
-'''
 
-'''
-def buildChains():
+def build_chains():
+    """
+
+    """
     return None
 
 
-'''
+def cyclical_figurate():
+    """
 
-'''
-def cyclicalFigurate():
-    dic = getValidNumbers()
+    """
+    dic = get_valid_numbers()
     print dic
 
 
-cyclicalFigurate()
+cyclical_figurate()

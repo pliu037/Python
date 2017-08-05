@@ -14,4 +14,3 @@ for i in xrange(1,limit*8):
     if i%limit == 0:
         dic = {}
         print "reset"
-        
