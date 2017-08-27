@@ -77,12 +77,16 @@ class Categorizer:
     def valid_column_set(self):
         if self.score_index is None or self.date_index is None or self.mentor_index is None:
             return False
-        if self.player_index is None and (self.email_index is None or self.first_name_index is None or
-                                          self.last_name_index is None):
-            return False
-        if self.name_index is None and (self.first_name_index is None or self.last_name_index is None):
-            return False
-        return True
+        valid = False
+        if self.player_index is not None and self.email_index is None and self.first_name_index is None and \
+                self.last_name_index is None:
+            valid = True
+        elif self.name_index is not None and self.first_name_index is None and self.last_name_index is None and \
+                self.email_index is not None:
+            valid = True
+        elif self.email_index is not None and self.first_name_index is not None and self.last_name_index is not None:
+            valid = True
+        return valid
 
     def parse_players(self, players_tokens):
         processed_players = []
@@ -101,15 +105,15 @@ class Categorizer:
             email = player_tokens[self.email_index]
             name = player_tokens[self.name_index]
             name_tokens = name.split(',')
-            first_name = name_tokens[1].trim()
-            last_name = name_tokens[0].trim()
+            first_name = name_tokens[1].strip()
+            last_name = name_tokens[0].strip()
         if self.player_index is not None:
             player = player_tokens[self.player_index]
-            player_tokens = player.split()
-            first_name = ' '.join(player_tokens[-2])
-            last_name = player_tokens[-2]
-            raw_email = player_tokens[-1]
-            email = raw_email
+            tokens = player.split()
+            first_name = ' '.join(tokens[:-2])
+            last_name = tokens[-2]
+            raw_email = tokens[-1]
+            email = raw_email.strip('<>')
         mentor = player_tokens[self.mentor_index]
         date = player_tokens[self.date_index]
         score = player_tokens[self.score_index]
