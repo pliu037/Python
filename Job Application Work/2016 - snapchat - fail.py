@@ -4,12 +4,12 @@
 Attempted to find k first and planned to use k in a modified binary search to find the smallest element
 Failed to implement a function to find k
 Analysis:
+- confused finding the smallest element with binary search for a given element (finding k is equivalent to finding the
+  smallest element)
 - started writing recursive code before completely flushing out the recursive substructure (e.g.: what each level must
   check and what is the subsequent level's responsibility)
 - need more practice manipulating interval indices (e.g.: inclusive and exclusive, wrapping around); currently, too much
   trial and error
-- confused finding the smallest element with binary search for a given element (finding k is equivalent to finding the
-  smallest element)
 '''
 
 def find_smallest(array):
