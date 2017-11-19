@@ -1,26 +1,42 @@
-from utils import *
+from test_runner import *
 
-path = '..\\q1'
+path = './q1'
 function_name = 'Fibonacci'
 
 
 def all_tests(c, s):
-    test1(c, s)
-    test2(c, s)
-    print s.file_name, s.errors, s.timings
+    base_test(c, s)
+    correctness_test(c, s)
+    recursion_depth_test(c, s)
+    timeout_test(c, s)
 
 
-def test1(c, s):
+def base_test(c, s):
     f = c()
     check = f.get_nth_fibonacci(1)
     if check != 0:
-        s.add_err(test1.__name__, 'test1 failed: First Fibonacci number should be 0, got ' + check)
+        s.add_err('First Fibonacci number should be 0, got ' + str(check))
+
+
+def correctness_test(c, s):
+    f = c()
+    check = f.get_nth_fibonacci(13)
+    if check != 144:
+        s.add_err('Thirteenth Fibonacci number should be 144, got ' + str(check))
+
+
+def recursion_depth_test(c, s):
+    f = c()
+    try:
+        f.get_nth_fibonacci(1000)
+    except RuntimeError as e:
+        s.add_err(e.message)
 
 
 @timer()
-def test2(c, s):
+def timeout_test(c, s):
     f = c()
-    for _i in xrange(100):
+    for _i in xrange(1000):
         f.get_nth_fibonacci(40)
 
 
