@@ -11,6 +11,7 @@ def all_tests(c, s):
     timeout_test(c, s)
 
 
+@test()
 def base_test(c, s):
     f = c()
     check = f.get_nth_fibonacci(1)
@@ -18,6 +19,7 @@ def base_test(c, s):
         s.add_err('First Fibonacci number should be 0, got ' + str(check))
 
 
+@test()
 def correctness_test(c, s):
     f = c()
     check = f.get_nth_fibonacci(13)
@@ -25,6 +27,7 @@ def correctness_test(c, s):
         s.add_err('Thirteenth Fibonacci number should be 144, got ' + str(check))
 
 
+@test()
 def recursion_depth_test(c, s):
     f = c()
     try:
@@ -33,7 +36,8 @@ def recursion_depth_test(c, s):
         s.add_err(e.message)
 
 
-@timer()
+@test()
+@timer
 def timeout_test(c, s):
     f = c()
     for _i in xrange(1000):

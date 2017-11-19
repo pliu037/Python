@@ -7,7 +7,7 @@ import time
 import signal
 import inspect
 
-__all__ = ['run_tests', 'timer']
+__all__ = ['run_tests', 'test', 'timer']
 
 
 def run_tests(path, entity_name, test):
@@ -15,16 +15,13 @@ def run_tests(path, entity_name, test):
     sys.path.append(os.path.abspath(path))
     for f in files:
         file_name = f[:-3]
-        try:
-            exec('from ' + file_name + ' import ' + entity_name)
-            s = _Stats(file_name)
-            test(locals()[entity_name], s)
-            s.report()
-        except Exception as e:
-            print file_name, e.message
+        exec('from ' + file_name + ' import ' + entity_name)
+        s = _Stats(file_name)
+        test(locals()[entity_name], s)
+        s.report()
 
 
-def timer(seconds=10):
+def test(timeout=10):
     def decorator(f):
         def _handle_timeout(signum, frame):
             raise _TimeoutError()
@@ -32,21 +29,31 @@ def timer(seconds=10):
         @wraps(f)
         def wrapper(*args, **kwargs):
             signal.signal(signal.SIGALRM, _handle_timeout)
-            signal.alarm(seconds)
+            signal.alarm(timeout)
             s = args[1]
             try:
-                start = time.time()
                 f(args[0], s)
             except _TimeoutError:
-                s.add_err('Timed out after ' + str(seconds) + 's', fn=f.__name__)
-            else:
-                s.add_timing(time.time() - start, fn=f.__name__)
+                s.add_err('Timed out after ' + str(timeout) + 's', fn=f.__name__)
+            except Exception as e:
+                s.add_err(e, fn=f.__name__)
             finally:
                 signal.alarm(0)
 
         return wrapper
 
     return decorator
+
+
+def timer(f):
+    @wraps(f)
+    def wrapper(*args, **kwargs):
+        s = args[1]
+        start = time.time()
+        f(args[0], s)
+        s.add_timing(time.time() - start, fn=f.__name__)
+
+    return wrapper
 
 
 class _Stats:
