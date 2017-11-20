@@ -8,12 +8,14 @@ def all_tests(f, s):
     empty_substr_test(f, s)
     empty_s_test(f, s)
     both_empty_test(f, s)
+    identical_test(f, s)
+    contained_test(f, s)
     found_test(f, s)
     not_found_test(f, s)
-    repetition_found_test(f, s)
-    repetition_not_found_test(f, s)
     found_timer_test(f, s)
-    not_found_timer_test(f, s)
+    not_found_front_timer_test(f, s)
+    not_found_middle_timer_test(f, s)
+    not_found_back_timer_test(f, s)
 
 
 @test()
@@ -39,37 +41,90 @@ def both_empty_test(f, s):
 
 
 @test()
+def identical_test(f, s):
+    check = f('abc', 'abc')
+    if check != 1:
+        s.add_err('Expected 1 since strings are identical, got ' + str(check))
+
+
+@test()
+def contained_test(f, s):
+    check = f('abcdefg', 'bcde')
+    if check != 1:
+        s.add_err('Expected 1 since s is contained within the substring, got ' + str(check))
+
+
+@test()
 def found_test(f, s):
-    check = f('nehg', 'hgnehgnehgn')
-    if check != 4:
-        s.add_err('"nehg" must be repeated 4 times for "hgnehgnehgn" to fit; given ' + str(check))
+    check = f('aabaabaacaabaabaab', 'caabaabaabaabaabaacaabaabaabaabaabaacaabaa')
+    if check != 3:
+        s.add_err('It takes 3 "aabaabaacaabaabaab" for "caabaabaabaabaabaacaabaabaabaabaabaacaabaa" to fit; given ' +
+                  str(check))
 
 
 @test()
 def not_found_test(f, s):
-    pass
-
-
-@test()
-def repetition_found_test(f, s):
-    pass
-
-
-@test()
-def repetition_not_found_test(f, s):
-    pass
+    check = f('aabaabaacaabaabaa', 'caabaabaabaabaabaacaabaabaabaabaabaacaabaa')
+    if check != -1:
+        s.add_err('"caabaabaabaabaabaacaabaabaabaabaabaacaabaa" cannot fit in any number of repetitions of ' +
+                  '"aabaabaacaabaabaa"; given ' + str(check))
 
 
 @test()
 @timer
 def found_timer_test(f, s):
-    pass
+    string = 'mmsdkja'
+    for _i in xrange(10000):
+        string += 'hgalkdjflkdmmsdkja'
+    string += 'hgalkdjfl'
+    check = f('djflkdmmsdkjahgalk', string)
+    if check != 10002:
+        s.add_err('Expected 10002, got ' + str(check))
+
+
+s1 = 'mmsdija'
+for _i in xrange(10000):
+    s1 += 'hgalkdjflkdmmsdkja'
+s1 += 'hgalkdjfl'
 
 
 @test()
 @timer
-def not_found_timer_test(f, s):
-    pass
+def not_found_front_timer_test(f, s):
+    check = f('djflkdmmsdkjahgalk', s1)
+    if check != -1:
+        s.add_err('Expected -1, got ' + str(check))
+
+
+s2 = 'mmsdkja'
+for _i in xrange(5000):
+    s2 += 'hgalkdjflkdmmsdkja'
+s2 += 'hgalkdjfkdmmsdkja'
+for _i in xrange(4999):
+    s2 += 'hgalkdjflkdmmsdkja'
+s2 += 'hgalkdjfl'
+
+
+@test()
+@timer
+def not_found_middle_timer_test(f, s):
+    check = f('djflkdmmsdkjahgalk', s2)
+    if check != -1:
+        s.add_err('Expected -1, got ' + str(check))
+
+
+s3 = 'mmsdkja'
+for _i in xrange(10000):
+    s3 += 'hgalkdjflkdmmsdkja'
+s3 += 'hgalkejfl'
+
+
+@test()
+@timer
+def not_found_back_timer_test(f, s):
+    check = f('djflkdmmsdkjahgalk', s3)
+    if check != -1:
+        s.add_err('Expected -1, got ' + str(check))
 
 
 run_tests(path, function_name, all_tests)

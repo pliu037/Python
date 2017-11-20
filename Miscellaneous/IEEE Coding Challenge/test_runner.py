@@ -15,7 +15,10 @@ def run_tests(path, entity_name, test):
     sys.path.append(os.path.abspath(path))
     for f in files:
         file_name = f[:-3]
-        exec('from ' + file_name + ' import ' + entity_name)
+        try:
+            exec('from ' + file_name + ' import ' + entity_name)
+        except Exception:
+            continue
         s = _Stats(file_name)
         test(locals()[entity_name], s)
         s.report()
@@ -69,7 +72,7 @@ class _Stats:
         self.timings[fn if fn else _get_func_name()] = timing
 
     def report(self):
-        print self.file_name, self.errors, self.timings
+        print self.file_name, len(self.errors), self.errors, self.timings
 
 
 class _TimeoutError(Exception):
