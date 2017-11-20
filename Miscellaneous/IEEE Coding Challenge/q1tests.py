@@ -1,4 +1,5 @@
 from test_runner import *
+from random import randint
 
 path = './q1'
 function_name = 'Fibonacci'
@@ -8,7 +9,8 @@ def all_tests(c, s):
     base_test(c, s)
     correctness_test(c, s)
     recursion_depth_test(c, s)
-    timeout_test(c, s)
+    single_timeout_test(c, s)
+    multi_timeout_test(c, s)
 
 
 @test()
@@ -38,10 +40,18 @@ def recursion_depth_test(c, s):
 
 @test()
 @timer
-def timeout_test(c, s):
+def single_timeout_test(c, s):
+    f = c()
+    f.get_nth_fibonacci(50)
+
+
+@test()
+@timer
+def multi_timeout_test(c, s):
     f = c()
     for _i in xrange(1000):
-        f.get_nth_fibonacci(40)
+        r = randint(1, 30)
+        f.get_nth_fibonacci(r)
 
 
 run_tests(path, function_name, all_tests)
