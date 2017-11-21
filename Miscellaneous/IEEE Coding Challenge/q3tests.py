@@ -1,6 +1,6 @@
 from test_runner import *
+import sys
 
-path = './q3'
 function_name = 'find_number_of_repeats'
 
 
@@ -127,4 +127,7 @@ def not_found_back_timer_test(f, s):
         s.add_err('Expected -1, got ' + str(check))
 
 
-run_tests(path, function_name, all_tests)
+if len(sys.argv) != 2:
+    print 'Provide one path'
+    exit(1)
+run_tests(sys.argv[1], function_name, all_tests)

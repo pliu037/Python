@@ -18,6 +18,7 @@ def run_tests(path, entity_name, test):
         try:
             exec('from ' + file_name + ' import ' + entity_name)
         except Exception:
+            print file_name + ' does not contain the expected interface'
             continue
         s = _Stats(file_name)
         test(locals()[entity_name], s)

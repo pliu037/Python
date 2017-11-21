@@ -1,7 +1,7 @@
 from test_runner import *
 from random import randint
+import sys
 
-path = './q2'
 function_name = 'find_minimum_loss'
 
 
@@ -68,4 +68,7 @@ def timing_test(f, s):
     f(a)
 
 
-run_tests(path, function_name, all_tests)
+if len(sys.argv) != 2:
+    print 'Provide one path'
+    exit(1)
+run_tests(sys.argv[1], function_name, all_tests)

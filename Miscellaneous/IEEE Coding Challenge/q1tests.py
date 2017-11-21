@@ -1,8 +1,8 @@
 from test_runner import *
 from random import randint
+import sys
 
-path = './q1'
-function_name = 'Fibonacci'
+class_name = 'Fibonacci'
 
 
 def all_tests(c, s):
@@ -54,4 +54,7 @@ def multi_timeout_test(c, s):
         f.get_nth_fibonacci(r)
 
 
-run_tests(path, function_name, all_tests)
+if len(sys.argv) != 2:
+    print 'Provide one path'
+    exit(1)
+run_tests(sys.argv[1], class_name, all_tests)
