@@ -49,7 +49,7 @@ that number).
 def findLowestLongestAmicableLoop(n):
     maxLoopLength = 0
     visited = [False for _i in xrange(n + 1)]
-    primesArray = findPrimes(isqrt(n))
+    primesArray = findPrimes(isqrt(n) + 1)
     for i in xrange(1, n + 1):
         if not visited[i]:
             currentChain = set()

@@ -52,6 +52,6 @@ def findProductCancellableFractions():
             if isCancellable(i, j):
                 productNumerator *= i
                 productDenominator *= j
-    return reducedForm(findPrimes(isqrt(productDenominator)), productNumerator, productDenominator)[1]
+    return reducedForm(findPrimes(isqrt(productDenominator) + 1), productNumerator, productDenominator)[1]
 
 print findProductCancellableFractions()

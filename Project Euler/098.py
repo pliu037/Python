@@ -1,7 +1,7 @@
 #https://projecteuler.net/problem=98
 
 from tools import getWordData
-from math import sqrt
+from gmpy2 import isqrt
 from itertools import combinations
 
 '''
@@ -99,7 +99,7 @@ def findLargestSqAnagram():
         if len(key) < minLength:
             minLength = len(key)
     squares = []
-    i = int(sqrt(10**minLength))
+    i = isqrt(10**minLength)
     while i**2 < 10**maxLength:
         squares.append(i**2)
         i += 1

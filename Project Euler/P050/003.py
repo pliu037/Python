@@ -1,12 +1,11 @@
 # https://projecteuler.net/problem=3
 
 from tools import findPrimes, findPrimeFactors
-from math import sqrt
+from gmpy2 import isqrt
 
 
 def find_largest_prime_factor(n):
-    sqrt_n = int(sqrt(n))
-    primes = findPrimes(sqrt_n)
+    primes = findPrimes(isqrt(n) + 1)
     prime_factors = findPrimeFactors(primes, n)
     return prime_factors[-1]
 

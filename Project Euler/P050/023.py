@@ -17,7 +17,7 @@ def isAbundant(primesArray, n):
 
 #Finds abundant numbers between 1 and maxCheck, exclusive, and returns them as an array
 def getAbundantNumbers(maxCheck):
-    primesArray = findPrimes(isqrt(maxCheck))
+    primesArray = findPrimes(isqrt(maxCheck) + 1)
     abundantNumbers = []
     for i in xrange(1, maxCheck):
         if isAbundant(primesArray, i):

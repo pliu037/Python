@@ -19,7 +19,7 @@ Observation:
 Runs in O(log(n)) time as opposed to the O(n*sqrt(n)) time of the below solution.
 '''
 def highestRatio(n):
-    primesArray = findPrimes(isqrt(n))
+    primesArray = findPrimes(isqrt(n) + 1)
     currentProduct = 1
     for prime in primesArray:
         currentProduct *= prime
@@ -39,7 +39,7 @@ the prime decomposition of i, (p_1**a)(p_2**b)(p_3**c)..., then phi(i) = (1 - 1/
 p**b(1 - 1/p_3)p_3**c... = i(1 - 1/p_1)(1 - 1/p_2)(1 - 1/p_3)...
 '''
 def highestRatioBrute(n):
-    primesArray = findPrimes(isqrt(n))
+    primesArray = findPrimes(isqrt(n) + 1)
     currentMax = 0
     currentMaxValue = 0
     for i in xrange(1, n + 1):
