@@ -11,14 +11,16 @@ def prime_power_triple_count(n):
     prime_fourths = []
     for prime in primes:
         product = prime * prime
+        if product >= n:
+            continue
+        prime_squares.append(product)
+        product *= prime
+        if product >= n:
+            continue
+        prime_cubes.append(product)
+        product *= prime
         if product < n:
-            prime_squares.append(product)
-            product *= prime
-            if product < n:
-                prime_cubes.append(product)
-                product *= prime
-                if product < n:
-                    prime_fourths.append(product)
+            prime_fourths.append(product)
     count = 0
     seen = set()
     for fourth in prime_fourths:
