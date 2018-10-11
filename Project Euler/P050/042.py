@@ -30,4 +30,4 @@ def findTriangularWords(words):
             count += 1
     return count
 
-print findTriangularWords(getWordData())    
+print findTriangularWords(getWordData())

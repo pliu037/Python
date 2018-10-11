@@ -1,3 +1,4 @@
+# coding=utf-8
 #https://projecteuler.net/problem=98
 
 from tools import getWordData

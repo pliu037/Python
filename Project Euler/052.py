@@ -20,7 +20,7 @@ def findPermutations():
            isPermutation(check, 3*check):
             return check
         check += 1
-        if (check / 10**magnitude > 1):
+        if check / 10**magnitude > 1:
             magnitude += 1
             check = 10**magnitude
     
