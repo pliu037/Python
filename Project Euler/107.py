@@ -23,6 +23,9 @@ def get_graph():
 
 
 def get_max_savings():
+    """
+
+    """
     graph = get_graph()
     in_set = {1}
     frontier_edges = []

@@ -5,6 +5,9 @@ from gmpy2 import isqrt
 
 
 def prime_power_triple_count(n):
+    """
+
+    """
     primes = findPrimes(isqrt(n) + 1)
     prime_squares = []
     prime_cubes = []

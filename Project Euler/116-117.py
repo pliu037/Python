@@ -5,6 +5,9 @@ https://projecteuler.net/problem=117
 
 
 def get_combination_memo(length, sizes):
+    """
+
+    """
     combination_memo = [1]
     for i in xrange(1, length + 1):
         total = 0
@@ -20,6 +23,9 @@ def get_combination_memo(length, sizes):
 
 
 def get_single_combinations(length, sizes):
+    """
+
+    """
     total = 0
     for size in sizes:
         total += get_combination_memo(length, [size])[length] - 1

@@ -5,6 +5,9 @@ from gmpy2 import isqrt
 
 
 def get_sorted_n_by_rad(n):
+    """
+
+    """
     primes = findPrimes(isqrt(n) + 1)
     rad = [(1, 1)]
     for i in xrange(2, n + 1):

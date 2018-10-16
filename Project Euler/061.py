@@ -18,7 +18,7 @@ class Chain:
         return self.__str__()
 
 
-def add_to_length_dict(length_dict, values):
+def _add_to_length_dict(length_dict, values):
     keys = [2**i for i in xrange(len(values))]
     if 1 not in length_dict:
         length_dict[1] = {}
@@ -37,29 +37,10 @@ def add_to_length_dict(length_dict, values):
             ending_dict[chain.last_two_digits()].append(chain)
 
 
-def get_initial_length_dict():
-    """
-
-    """
-    # 19 is the point below which the largest function, octagonal, yields 3-digit numbers
-    length_dict = {}
-    i = 19
-
-    # 141 is the point above which the smallest function, triangular, yields 5-digit numbers
-    while i < 142:
-        values = [i * (i + 1) / 2,
-                  i * i,
-                  i * (3 * i - 1) / 2,
-                  i * (2 * i - 1),
-                  i * (5 * i - 3) / 2,
-                  i * (3 * i - 2)]
-        add_to_length_dict(length_dict, values)
-        i += 1
-    return length_dict
-
 
 def merge_component_dicts(head_components_dict, tail_components_dict):
     """
+
     """
     merged_components_dict = {}
     for head_components in head_components_dict:
@@ -86,6 +67,27 @@ def merge_component_dicts(head_components_dict, tail_components_dict):
                                 ending_dict[chain.last_two_digits()] = []
                             ending_dict[chain.last_two_digits()].append(chain)
     return merged_components_dict
+
+
+def get_initial_length_dict():
+    """
+
+    """
+    # 19 is the point below which the largest function, octagonal, yields 3-digit numbers
+    length_dict = {}
+    i = 19
+
+    # 141 is the point above which the smallest function, triangular, yields 5-digit numbers
+    while i < 142:
+        values = [i * (i + 1) / 2,
+                  i * i,
+                  i * (3 * i - 1) / 2,
+                  i * (2 * i - 1),
+                  i * (5 * i - 3) / 2,
+                  i * (3 * i - 2)]
+        _add_to_length_dict(length_dict, values)
+        i += 1
+    return length_dict
 
 
 def cyclical_figurate():
