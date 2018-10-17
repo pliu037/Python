@@ -6,7 +6,8 @@ from gmpy2 import isqrt
 
 def get_sorted_n_by_rad(n):
     """
-
+    Given that rad(x) is the product of the distinct prime factors of x, returns a sorted list of tuples for
+    1 <= i <= n where the tuples are of the form (rad(i), i)
     """
     primes = findPrimes(isqrt(n) + 1)
     rad = [(1, 1)]

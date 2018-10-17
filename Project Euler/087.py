@@ -6,7 +6,8 @@ from gmpy2 import isqrt
 
 def prime_power_triple_count(n):
     """
-
+    Returns the number of distinct integers below n that can be expressed as the sum of the square of a prime,
+    the cube of a prime, and the fourth power of a prime
     """
     primes = findPrimes(isqrt(n) + 1)
     prime_squares = []

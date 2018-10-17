@@ -11,23 +11,15 @@ class Chain:
     def last_two_digits(self):
         return self.chain[-1] % 100
 
-    def __str__(self):
-        return self.chain.__str__()
 
-    def __repr__(self):
-        return self.__str__()
-
-
-def _add_to_length_dict(length_dict, values):
+def _add_to_components_dict(components_dict, values):
     keys = [2**i for i in xrange(len(values))]
-    if 1 not in length_dict:
-        length_dict[1] = {}
     for index, value in enumerate(values):
         if 1000 <= value < 10000 and value % 100 >= 10:
-            if keys[index] not in length_dict[1]:
-                length_dict[1][keys[index]] = {'starting': {}, 'ending': {}}
-            starting_dict = length_dict[1][keys[index]]['starting']
-            ending_dict = length_dict[1][keys[index]]['ending']
+            if keys[index] not in components_dict:
+                components_dict[keys[index]] = {'starting': {}, 'ending': {}}
+            starting_dict = components_dict[keys[index]]['starting']
+            ending_dict = components_dict[keys[index]]['ending']
             chain = Chain([value])
             if chain.first_two_digits() not in starting_dict:
                 starting_dict[chain.first_two_digits()] = []
@@ -37,10 +29,11 @@ def _add_to_length_dict(length_dict, values):
             ending_dict[chain.last_two_digits()].append(chain)
 
 
-
-def merge_component_dicts(head_components_dict, tail_components_dict):
+def merge_components_dicts(head_components_dict, tail_components_dict):
     """
-
+    Given two dictionaries of the form defined in get_initial_components_dict, merges them to form a new
+    dictionary of the same form but whose chains are the concatenation of chains from the two initial
+    dictionaries (1 chain from each)
     """
     merged_components_dict = {}
     for head_components in head_components_dict:
@@ -69,13 +62,22 @@ def merge_component_dicts(head_components_dict, tail_components_dict):
     return merged_components_dict
 
 
-def get_initial_length_dict():
+def get_initial_components_dict():
     """
-
+    Generates the initial dictionary of 1-length chains with the form (see _add_to_components_dict):
+    <components>:
+        "starting":
+            <first two digits>: [list of chains]
+        "ending":
+            <last two digits>: [list of chains]
+    where the <components> key is a bit array indicating the series present in a chain, the <first two digits>
+    and <last two digit> keys are the first and last two digits of a chain, respectively, and a chain is a
+    chain of integers such that there is at most one integer from each series and the last two digits of one
+    integer are the first two digits of the next
     """
     # 19 is the point below which the largest function, octagonal, yields 3-digit numbers
-    length_dict = {}
     i = 19
+    components_dict = {}
 
     # 141 is the point above which the smallest function, triangular, yields 5-digit numbers
     while i < 142:
@@ -85,19 +87,21 @@ def get_initial_length_dict():
                   i * (2 * i - 1),
                   i * (5 * i - 3) / 2,
                   i * (3 * i - 2)]
-        _add_to_length_dict(length_dict, values)
+        _add_to_components_dict(components_dict, values)
         i += 1
-    return length_dict
+    return components_dict
 
 
 def cyclical_figurate():
     """
-
+    Returns the sum of the chain of six 4-digit integers such that there is an integer from each of the six
+    series defined in get_initial_length_dict and the last two digits of one integer are the first two digits
+    of the next (with the last integer wrapping around to the first)
     """
-    length_dict = get_initial_length_dict()
-    length_dict[2] = merge_component_dicts(length_dict[1], length_dict[1])
-    length_dict[3] = merge_component_dicts(length_dict[2], length_dict[1])
-    length_dict[6] = merge_component_dicts(length_dict[3], length_dict[3])
+    length_dict = {1: get_initial_components_dict()}
+    length_dict[2] = merge_components_dicts(length_dict[1], length_dict[1])
+    length_dict[3] = merge_components_dicts(length_dict[2], length_dict[1])
+    length_dict[6] = merge_components_dicts(length_dict[3], length_dict[3])
     final_dict = length_dict[6][63]
     for first_two_digits in final_dict['starting']:
         chains = final_dict['starting'][first_two_digits]
