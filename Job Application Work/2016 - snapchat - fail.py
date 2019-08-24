@@ -64,14 +64,14 @@ def find_shift(array, start, end):
         return find_shift(array, midpoint + 1, end)
 
 
-def helper_shifted_binary_search_offset(target, array, offset):
+def shifted_binary_search_offset(target, array, offset):
 
     # The pattern for wrapping some point x in the interval [s, e] is (x + shift - s) % (e - s + 1) + s
     # len(array) + 1 is used to guarantee at least one pass of the recursive function (if new_range >***=*** range)
-    return shifted_binary_search_offset(offset, (len(array) + offset - 1) % len(array) + 1, target, array, len(array) + 1)
+    return helper_shifted_binary_search_offset(offset, (len(array) + offset - 1) % len(array) + 1, target, array, len(array) + 1)
 
 
-def shifted_binary_search_offset(start, end, target, array, range):
+def helper_shifted_binary_search_offset(start, end, target, array, range):
     if start < end:
         new_range = end - start
         midpoint = (start + end) / 2
@@ -90,9 +90,9 @@ def shifted_binary_search_offset(start, end, target, array, range):
         return None
 
     if array[midpoint] < target:
-        return shifted_binary_search_offset((midpoint + 1) % len(array), end, target, array, new_range)
+        return helper_shifted_binary_search_offset((midpoint + 1) % len(array), end, target, array, new_range)
     else:
-        return shifted_binary_search_offset(start, midpoint, target, array, new_range)
+        return helper_shifted_binary_search_offset(start, midpoint, target, array, new_range)
 
 
 test = [6, 7, 8, 9, 10, 11, 12, 13, 1, 2, 3, 5]
@@ -100,5 +100,5 @@ target = 2
 print 'Smallest value: ' + str(find_smallest(test))
 shift = find_shift(test, 0, len(test))
 print 'Shifted by: ' + str(shift)
-print str(target) + ' at index: ' + str(helper_shifted_binary_search_offset(target, test, shift))
+print str(target) + ' at index: ' + str(shifted_binary_search_offset(target, test, shift))
 print str(target) + ' at index: ' + str(shifted_binary_search(target, test, len(test) / 2))

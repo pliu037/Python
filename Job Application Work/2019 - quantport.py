@@ -21,6 +21,8 @@ thus record that we picked 0 for the [0...n] array). Then, knowing that for suba
 [1...n] the optimal move is to pick card n, we can calculate the obtainable value of
 array [0...n] by adding the value of 0 to the obtainable value of [1...n-1].
 """
+
+
 def max_sum_adversarial_cards(cards):
     subarray_value = {}
     side_picked = {}
