@@ -47,5 +47,5 @@ uncache(['test_pkg.variable'])
 
 from test_pkg import func
 
-variable.var = "test2"
+
 func.print_var()

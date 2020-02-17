@@ -110,6 +110,39 @@ def findPrimes(n):
         i += 1
     return primes
 
+# Stateful prime sieve that returns a set of primes up to ceil, exclusive, and can continue sieving
+# from where it left off
+class StatefulPrimeSieve:
+    def __init__(self):
+        self.ceiling = 2
+        self.last_seen_per_prime = {}
+
+    def findPrimes(self, ceil):
+        if ceil <= self.ceiling:
+            return self.last_seen_per_prime.keys()
+
+        base = self.ceiling
+        sieve = [True for _ in xrange(base, ceil)]
+
+        for prime, last_seen in self.last_seen_per_prime.iteritems():
+            current = last_seen
+            while current + prime < ceil:
+                current += prime
+                sieve[current - base] = False
+            self.last_seen_per_prime[prime] = current
+
+        for i in xrange(ceil - base):
+            if sieve[i]:
+                prime = base + i
+                current = prime
+                while current + prime < ceil:
+                    current += prime
+                    sieve[current - base] = False
+                self.last_seen_per_prime[prime] = current
+
+        self.ceiling = ceil
+        return self.last_seen_per_prime.keys()
+
 '''
 Given an array of primes up to sqrt(n), finds the prime factors of n and returns them, in ascending
 order, as an array
