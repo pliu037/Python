@@ -1,7 +1,7 @@
 def strxor (a,b):     # xor two strings of different lengths
     return "".join([chr(ord(x)^ord(y)) for (x,y) in zip(a,b)])
 
-file = open("D:\Work\Programming\Python\Cryptography\CBC_PO.txt", "r")
+file = open("./CBC_PO.txt", "r")
 target = file.readline()
 buffer = file.readlines()
 file.close()
